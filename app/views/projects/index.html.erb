@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <%= link_to 'Go to Category', categories_path %>
+  <%= link_to 'New Project', new_project_path, class: 'btn btn-primary float-right' %>
+  <h1 class="display-4">Projects</h1>
+  <hr class="my-4">
+
+
+  <form action="/projects" class="d-flex">
+  <label><b>Sort:</b></label>
+    <div class="col-3 form-group">
+        
+        <%= select_tag :sort, options_for_select([['Recent', 'project_created_at'], ['Category ASC', 'category_name'], ['Username ASC', 'username'], ['Project Title ASC', 'title']]), class: 'form-control' %>
+    </div>
+    <div class="col-3">
+      <input type="submit" value="Submit" class='btn btn-primary'>
+    </div>
+  </form>
+  <br/>
+  <% if @projects.present?%>
+    <table class="table table-bordered">
+      <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Project Title</th>
+            <th scope="col">Username</th>
+            <th scope="col">Category Name</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <th scope="row">*</th>
+            <td><%= project.title %></td>
+            <td><%= project.username %></td>
+            <td><%= project.category_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <%= will_paginate @projects%>
+</div>

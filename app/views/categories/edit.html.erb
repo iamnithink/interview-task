@@ -1,0 +1,9 @@
+<div class="jumbotron center-form">
+	<%= link_to 'Back', categories_path %>
+  <h4 class="display-4">Editing Category</h4>
+  <hr class="my-4">
+	<%= render 'form', category: @category %>
+  <hr class="my-4">
+	<%= link_to 'Show', @category, class: 'btn btn-primary' %> |
+	<%= link_to 'Back', categories_path, class: 'btn btn-primary' %>
+</div>

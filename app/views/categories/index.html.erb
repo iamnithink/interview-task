@@ -1,0 +1,31 @@
+<div class="jumbotron">
+  <p id="notice"><%= notice %></p>
+  <%= link_to 'Go to Projects', projects_path %>
+  <%= link_to 'New Category', new_category_path, class: 'btn btn-primary float-right' %>
+  <h1 class="display-4">Categogries</h1>
+  <hr class="my-4">
+
+  <% if @categories.present?%>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <th scope="row">*</th>
+        <td><%= category.name %></td>
+        <td>
+          <%= link_to 'Show', category, class: 'btn btn-success' %> |
+          <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+</div>
