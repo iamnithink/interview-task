@@ -1,0 +1,23 @@
+  <% if @projects.present?%>
+    <table class="table table-bordered">
+      <thead>
+          <tr>
+            <th scope="col"><%= link_to "#", :sort=> "project_created_at" %></th>
+            <th scope="col"><%= link_to "Project Title", :sort=> "title" %></th>
+            <th scope="col"><%= link_to "Username", :sort=> "username" %></th>
+            <th scope="col"><%= link_to "Category Name", :sort=> "category_name" %></th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <th scope="row">*</th>
+            <td><%= project.title %></td>
+            <td><%= project.username %></td>
+            <td><%= project.category_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <%= will_paginate @projects%>
